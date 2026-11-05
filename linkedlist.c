@@ -50,9 +50,32 @@ Account *make_account(Account *head , char *name , int number , double balance){
     
 }
 
+void take_input( char *name , int *acc_num , double *bal){
+    printf("Enter the name of the account holder : ");
+    scanf("%s",name);
+    printf("Enter the account number of the account holder : ");
+    scanf("%d", acc_num);
+    printf("Enter the amount that you want to deopsit: ");
+    scanf("%d",&bal);
+}
+
 
 int main(){
     Account *head=NULL;
     
+    char *name;
+    int account_number;
+    double acc_balance;
+    char consent[100];
+    take_input(name , &account_number , &acc_balance );
+    printf("Do you want to create an account.\n");
+    printf("If you want to create a account they type Yes: ");
+    scanf("%s", consent);
+
+    if(consent=="Yes "|| consent=="yes"){
+        take_input(name , &account_number , &acc_balance );
+    }
+
+
 }
 
