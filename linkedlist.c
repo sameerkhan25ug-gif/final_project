@@ -47,35 +47,40 @@ Account *make_account(Account *head , char *name , int number , double balance){
         head=ptr;
         next_account=ptr;
     }
-    
+    return ptr;
 }
 
 void take_input( char *name , int *acc_num , double *bal){
     printf("Enter the name of the account holder : ");
     scanf("%s",name);
     printf("Enter the account number of the account holder : ");
-    scanf("%d", acc_num);
+    scanf("%d",acc_num);
     printf("Enter the amount that you want to deopsit: ");
-    scanf("%d",&bal);
+    scanf("%d",bal);
 }
 
 
 int main(){
     Account *head=NULL;
     
-    char *name;
+    char name[100];
     int account_number;
     double acc_balance;
-    char consent[100];
-    take_input(name , &account_number , &acc_balance );
-    printf("Do you want to create an account.\n");
-    printf("If you want to create a account they type Yes: ");
-    scanf("%s", consent);
+    char consent[100]="Yes";
+    char consent2[100]="yes";
+    char user_consent[100];
 
-    if(consent=="Yes "|| consent=="yes"){
+    printf("Do you want to create an account? \n");
+    printf("If yes then type Yes: ");
+    scanf("%s", user_consent);
+    
+    if(strcmp(consent,user_consent)==0||strcmp(consent2,user_consent)==0){
+        printf("Since you want to create account please enter the following details : - \n");
         take_input(name , &account_number , &acc_balance );
     }
-
+    Account *Person_1= make_account(head , name , account_number , acc_balance);
+    printf("The memory that is there in head is %p",head);
+    printf("The memory that is there in Account one  is %p",Person_1);
 
 }
 
