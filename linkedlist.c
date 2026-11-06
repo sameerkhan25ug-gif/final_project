@@ -78,22 +78,30 @@ int main(){
     char name[100];
     int acc_num;
     double acc_balance;
-    char consent[100]="Yes";
-    char consent2[100]="yes";
-    char consent3[100]="No";
-    char consent4[100]="No";
-    char user_consent[100];
+    // char consent[100]="Yes";
+    // char consent2[100]="yes";
+    // char consent3[100]="No";
+    // char consent4[100]="No";
+    // char user_consent[100];
     int count=0;
 
-    printf("Do you want to create an account? \n");
-    printf("If yes then type Yes or else type NO: ");
-    scanf("%s", user_consent);
+    // printf("Do you want to create an account? \n");
+    // printf("If yes then type Yes or else type NO: ");
+    // scanf("%s", user_consent);
     // printf("If yes then type Yes or else type NO: ");
     // scanf("%s", user_consent);
     // printf("%s",user_consent);
 
     do{
+        char consent[100]="Yes";
+        char consent2[100]="yes";
+        char consent3[100]="No";
+        char consent4[100]="No";
         char user_consent[100];
+        printf("Do you want to create an account? \n");
+        printf("If yes then type Yes or else type NO: ");
+        scanf("%s", user_consent);
+
         if(strcmp(consent3,user_consent)==0||strcmp(consent4,user_consent)==0){
         break;
        }
@@ -114,7 +122,7 @@ int main(){
 
        count++;
        printf("Memory allocated to head is %p\n ",head);
-       printf("The memory allocated for head is %p\n",traverse_pointer);
+       printf("The memory allocated for traverse_pointer is %p\n",traverse_pointer);
        printf("%s\n", user_consent);
 
        printf("Do you want to create an account? \n");
