@@ -47,6 +47,7 @@ Account *make_account(Account *head , char *name , int number , double balance){
         head=ptr;
         next_account=ptr;
     }
+    
     return ptr;
 }
 
@@ -64,7 +65,7 @@ int main(){
     Account *head=NULL;
     
     char name[100];
-    int account_number;
+    int acc_num;
     double acc_balance;
     char consent[100]="Yes";
     char consent2[100]="yes";
@@ -76,11 +77,22 @@ int main(){
     
     if(strcmp(consent,user_consent)==0||strcmp(consent2,user_consent)==0){
         printf("Since you want to create account please enter the following details : - \n");
-        take_input(name , &account_number , &acc_balance );
+        take_input(name , &acc_num , &acc_balance );
     }
-    Account *Person_1= make_account(head , name , account_number , acc_balance);
+    printf("%d",acc_num);
+    printf("%d",acc_balance);
+
+    Account *Person_1= make_account(head , name , acc_num , acc_balance);
+    head=Person_1;
     printf("The memory that is there in head is %p",head);
-    printf("The memory that is there in Account one  is %p",Person_1);
+    printf("The memory that is there in Account one  is %p\n",Person_1);
+    printf("%d\n",Person_1->account_number);
+    printf("%s\n",Person_1->holder_name);
+    printf("%d\n",Person_1->balance);
+    printf("%s\n",Person_1->status);
+
+    char *name1="Sameer_khan";
+    printf("%s",name1);
 
 }
 
