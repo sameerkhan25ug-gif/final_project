@@ -69,7 +69,6 @@ void free_memory( Account *head){
         to_del_next=head->next;
         free(head);
         head=to_del_next;
-
     }
 }
 int main(){
