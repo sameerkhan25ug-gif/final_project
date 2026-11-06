@@ -20,8 +20,8 @@ typedef struct {
     int total_accounts;
 } AccountList;
 
-void *new_account(Account *head , char *name , int number , double balance){
-    Account *current=head;
+Account *new_account(Account *traverse_pointer, char *name , int number , double balance){
+    // Account *current=head;
     Account *ptr=(Account *)(malloc(sizeof(Account)));
     if(ptr==NULL){
         printf("Memory Allocation failed! Try again.");
@@ -30,8 +30,9 @@ void *new_account(Account *head , char *name , int number , double balance){
     ptr->account_number=number;
     ptr->balance=balance;
     ptr->status=ACCOUNT_ACTIVE;
-    current->next=ptr;
-    current=current->next;
+    traverse_pointer->next=ptr;
+    traverse_pointer=traverse_pointer->next;
+    return ptr;
 }
 Account *make_account(Account *head , char *name , int number , double balance){
     Account *next_account = NULL;
@@ -41,7 +42,6 @@ Account *make_account(Account *head , char *name , int number , double balance){
     }
     if(head==NULL){
         head=ptr;
-        next_account=ptr;
         strcpy(ptr->holder_name, name);
          ptr->account_number=number;
          ptr->balance=balance;
@@ -88,29 +88,28 @@ int main(){
     printf("If yes then type Yes or else type NO: ");
     scanf("%s", user_consent);
     
-    
+
     while(strcmp(consent3,user_consent)!=0){
         if(strcmp(consent,user_consent)==0||strcmp(consent2,user_consent)==0){
         printf("Since you want to create account please enter the following details : - \n");
         take_input(name , &acc_num , &acc_balance );
-       }
+       };
        if(count==0){
         head=make_account(head , name , acc_num , acc_balance);
+        traverse_pointer=head;
+        printf("The memory allocated for head is %p",head);
+        printf("The memory allocated for head is %p",traverse_pointer);
        }
-       else{
-        traverse_pointer=make_account(head , name , acc_num , acc_balance);
+        else{
+        traverse_pointer=make_account(traverse_pointer , name , acc_num , acc_balance);
        }
        count++;
-    }
-    printf("Memory allocated to head is %p ",head);
-    
-    // Account *Person_1= make_account(head , name , acc_num , acc_balance);
-    // head=Person_1;
+       printf("Memory allocated to head is %p ",head);
+     printf("The memory allocated for head is %p",traverse_pointer);
 
-    // printf("%d\n",Person_1->account_number);
-    // printf("%s\n",Person_1->holder_name);
-    // printf("%d\n",Person_1->balance);
-    // printf("%d\n",Person_1->status);
+    } 
+     printf("Memory allocated to head is %p ",head);
+     printf("The memory allocated for head is %p",traverse_pointer);
 
 }
 
