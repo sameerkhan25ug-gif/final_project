@@ -37,7 +37,7 @@ Account *new_account(Account *traverse_pointer, char *name , int number , double
     return ptr;
 }
 Account *make_account(Account *head , char *name , int number , double balance){
-    Account *next_account = NULL;
+    Account *return_value;
     Account *ptr=(Account *)(malloc(sizeof(Account)));
     if(ptr==NULL){
         printf("Memory Allocation failed! Try again.");
@@ -49,12 +49,13 @@ Account *make_account(Account *head , char *name , int number , double balance){
          ptr->balance=balance;
          ptr->status=ACCOUNT_ACTIVE;
          ptr->next=NULL;
+         return_value=ptr;
     }
     else{
-        new_account(head,name ,number ,balance);
+        return_value=new_account(head,name ,number ,balance);
     }
 
-    return ptr;
+    return return_value;
 }
 
 void take_input( char *name , int *acc_num , double *bal){
