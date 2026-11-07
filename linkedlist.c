@@ -119,23 +119,27 @@ int main(){
         head=make_account(head , name , acc_num , acc_balance);
         traverse_pointer=head;
         printf("The memory allocated for head is %p",head);
-        printf("The memory allocated for head is %p\n",traverse_pointer);
+        printf("The memory allocated for traverse_pointer is %p\n",traverse_pointer);
         printf("%s\n",traverse_pointer->holder_name);
         printf("%d\n",traverse_pointer->account_number);
         printf("%d\n",traverse_pointer->balance);
         printf("%d\n",traverse_pointer->status);
        }
-        else{
+       printf("The memory allocated for traverse_pointer (outside)  is %p\n",traverse_pointer);
+        // else-if{
+        printf("Do you want to create an account? \n");
+        printf("If yes then type Yes or else type NO: ");
+        scanf("%s", user_consent);
         printf("The traverse_pointer got is %p\n",traverse_pointer);
         printf("Since you want to create account please enter the following details : - \n");
         take_input(name , &acc_num , &acc_balance );
-        traverse_pointer=make_account(traverse_pointer , name , acc_num , acc_balance);
+        traverse_pointer=make_account(head , name , acc_num , acc_balance);
         printf("The traverse_pointer returning  is %p\n",traverse_pointer);
         printf("%s\n",traverse_pointer->holder_name);
         printf("%d\n",traverse_pointer->account_number);
         printf("%d\n",traverse_pointer->balance);
         printf("%d\n",traverse_pointer->status);
-        }
+        // }
         
        printf("The traverse_pointer returning  is %p\n",traverse_pointer);
        count++;
@@ -145,10 +149,10 @@ int main(){
        printf("%s\n", user_consent);
 
     }while(1);
-    traverse_pointer=head;
+    // traverse_pointer=head;
     printf("The final memory allocated to head is %p\n ",head);
     printf("The final memory allocated for traverse_pointer is %p\n",traverse_pointer);
     printf_information(head);
 
-}
+}  
 
