@@ -21,7 +21,6 @@ typedef struct {
 } AccountList;
 
 Account *new_account(Account *traverse_pointer, char *name , int number , double balance){
-    // Account *current=head;
     Account *ptr=(Account *)(malloc(sizeof(Account)));
     if(ptr==NULL){
         printf("Memory Allocation failed! Try again.");
@@ -33,6 +32,8 @@ Account *new_account(Account *traverse_pointer, char *name , int number , double
     ptr->next=NULL;
     traverse_pointer->next=ptr;
     traverse_pointer=traverse_pointer->next;
+    printf("I am function 1 \n");
+    printf("My assigned value to pointer is %p\n",ptr);
     return ptr;
 }
 Account *make_account(Account *head , char *name , int number , double balance){
@@ -100,6 +101,7 @@ int main(){
     int count=0;
 
     do{
+    
         printf("Do you want to create an account? \n");
         printf("If yes then type Yes or else type NO: ");
         scanf("%s", user_consent);
@@ -108,11 +110,9 @@ int main(){
         break;
        }
 
-        if(strcmp(consent,user_consent)==0||strcmp(consent2,user_consent)==0){
-        printf("Since you want to create account please enter the following details : - \n");
-        take_input(name , &acc_num , &acc_balance );
-       
-       if(count==0){
+        if(strcmp(consent,user_consent)==0||strcmp(consent2,user_consent)==0)
+
+        if(count==0){
         printf("Since you want to create account please enter the following details : - \n");
         take_input(name , &acc_num , &acc_balance );
         head=make_account(head , name , acc_num , acc_balance);
@@ -126,28 +126,23 @@ int main(){
        }
         else{
         printf("The traverse_pointer got is %p\n",traverse_pointer);
-        // printf("Since you want to create account please enter the following details : - \n");
-        // take_input(name , &acc_num , &acc_balance );
+        printf("Since you want to create account please enter the following details : - \n");
+        take_input(name , &acc_num , &acc_balance );
         traverse_pointer=make_account(traverse_pointer , name , acc_num , acc_balance);
+        printf("The traverse_pointer returning  is %p\n",traverse_pointer);
         printf("%s\n",traverse_pointer->holder_name);
         printf("%d\n",traverse_pointer->account_number);
         printf("%d\n",traverse_pointer->balance);
         printf("%d\n",traverse_pointer->status);
         }
         
-       }
        printf("The traverse_pointer returning  is %p\n",traverse_pointer);
-
        count++;
+
        printf("Memory allocated to head is %p\n ",head);
        printf("The memory allocated for traverse_pointer is %p\n",traverse_pointer);
        printf("%s\n", user_consent);
 
-    //    printf("Do you want to create an account? \n");
-    //    printf("If yes then type Yes or else type NO: ");
-    //    scanf("%s\n", user_consent);
-       
-        
     }while(1);
     traverse_pointer=head;
     printf("The final memory allocated to head is %p\n ",head);
