@@ -34,6 +34,35 @@ Account *new_account(Account *traverse_pointer, char *name , int number , double
     traverse_pointer=traverse_pointer->next;
     return new_ptr;
 }
+Account *delete_at_random_position( Account *head ,int number ){
+    Account *traverse_random=head;
+    Account *traverse_random_prev;
+    while(traverse_random!=NULL){
+        if(traverse_random->account_number==number){
+            traverse_random_prev->next=traverse_random->next;
+            free(traverse_random);
+        }
+        traverse_random_prev=traverse_random;
+        traverse_random=traverse_random->next;
+    }  
+    return traverse_random_prev;  
+}
+
+int search_at_random_position( Account *head ,int number ){
+    Account *search_random=head;
+    while(search_random!=NULL){
+        if(search_random->account_number==number){
+            printf("%s\n",search_random->holder_name);
+            printf("%d\n",search_random->account_number);
+            printf("%lf\n",search_random->balance);
+            printf("%d\n",search_random->status);
+            return 0;
+        }
+        search_random=search_random->next;
+    }  
+    
+}
+
 Account *make_account(Account *head , char *name , int number , double balance){
     Account *return_value;
     Account *ptr=(Account *)(malloc(sizeof(Account)));
@@ -55,6 +84,7 @@ Account *make_account(Account *head , char *name , int number , double balance){
 
     return return_value;
 }
+
 
 void take_input( char *name , int *acc_num , double *bal){
     printf("Enter the name of the account holder : ");
