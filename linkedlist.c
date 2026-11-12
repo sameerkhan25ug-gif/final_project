@@ -20,7 +20,7 @@ typedef struct {
     int total_accounts;
 } AccountList;
 
-Account *new_account(Account *traverse_pointer, char *name , int number , double balance){
+Account *next_new_account(Account *traverse_pointer, char *name , int number , double balance){
     Account *new_ptr=(Account *)(malloc(sizeof(Account)));
     if(new_ptr==NULL){
         printf("Memory Allocation failed! Try again.");
@@ -34,6 +34,7 @@ Account *new_account(Account *traverse_pointer, char *name , int number , double
     traverse_pointer=traverse_pointer->next;
     return new_ptr;
 }
+
 Account *delete_at_random_position( Account *head ,int number ){
     Account *traverse_random=head;
     Account *traverse_random_prev;
@@ -41,6 +42,7 @@ Account *delete_at_random_position( Account *head ,int number ){
         if(traverse_random->account_number==number){
             traverse_random_prev->next=traverse_random->next;
             free(traverse_random);
+            return 0;
         }
         traverse_random_prev=traverse_random;
         traverse_random=traverse_random->next;
@@ -48,19 +50,14 @@ Account *delete_at_random_position( Account *head ,int number ){
     return traverse_random_prev;  
 }
 
-int search_at_random_position( Account *head ,int number ){
+Account  *search_at_random_position( Account *head ,int number ){
     Account *search_random=head;
     while(search_random!=NULL){
         if(search_random->account_number==number){
-            printf("%s\n",search_random->holder_name);
-            printf("%d\n",search_random->account_number);
-            printf("%lf\n",search_random->balance);
-            printf("%d\n",search_random->status);
-            return 0;
+            return search_random;
         }
         search_random=search_random->next;
     }  
-    
 }
 
 Account *make_account(Account *head , char *name , int number , double balance){
@@ -79,32 +76,10 @@ Account *make_account(Account *head , char *name , int number , double balance){
          return_value=ptr;
     }
     else{
-        return_value=new_account(head,name ,number ,balance);
+        return_value=next_new_account(head,name ,number ,balance);
     }
 
     return return_value;
-}
-
-
-void take_input( char *name , int *acc_num , double *bal){
-    printf("Enter the name of the account holder : ");
-    scanf("%s",name);
-    printf("Enter the account number of the account holder : ");
-    scanf("%d",acc_num);
-    printf("Enter the amount that you want to deopsit: ");
-    scanf("%lf",bal);
-}
-
-void printf_information( Account *head){
-    Account *head_copy=head;
-    while(head_copy!=NULL){
-        printf("%s\n",head_copy->holder_name);
-        printf("%d\n",head_copy->account_number);
-        printf("%lf\n",head_copy->balance);
-        printf("%d\n",head_copy->status);
-        head_copy=head_copy->next;
-
-    }
 }
 
 void free_memory( Account *head){
@@ -115,50 +90,12 @@ void free_memory( Account *head){
         head=to_del_next;
     }
 }
+
 int main(){
     Account *head=NULL;
-    Account *traverse_pointer=NULL;
-    
-    char name[100];
-    int acc_num;
-    double acc_balance;
-    char consent[100]="Yes";
-    char consent2[100]="yes";
-    char consent3[100]="No";
-    char consent4[100]="No";
-    char user_consent[100];
-    int count=0;
-
-    do{
-        printf("Do you want to create an account? \n");
-        printf("If yes then type Yes or else type NO: ");
-        scanf("%s", user_consent);
-
-        if(strcmp(consent3,user_consent)==0||strcmp(consent4,user_consent)==0){
-        break;
-        }
-
-        if(strcmp(consent,user_consent)==0||strcmp(consent2,user_consent)==0)
-
-        if(count==0){
-        printf("Since you want to create account please enter the following details : - \n");
-        take_input(name , &acc_num , &acc_balance );
-        head=make_account(head , name , acc_num , acc_balance);
-        traverse_pointer=head;
-       }
-        else{
-        take_input(name , &acc_num , &acc_balance );
-        traverse_pointer=make_account(traverse_pointer , name , acc_num , acc_balance);
-        
-        }
-        count++;
-        printf("The value  of traverse_ptr inside loop is is %p",traverse_pointer);
-        printf("The value  of head inside loop is %p",head);
-    }while(1);
-    printf("The value  of head outside loop is %p",head);
-    printf("The value  of traverse_ptr outside is %p",traverse_pointer);
-    traverse_pointer=head;
-    printf("The value  of traverse_ptr after assigning head is %p",traverse_pointer);
-
-    printf_information(traverse_pointer);  
+    make_account(head , "Sameer", 100 , 1000000.00);
+    printf("%s\n",head->holder_name);
+        printf("%d\n",head->account_number);
+        printf("%lf\n",head->balance);
+        printf("%d\n",head->status);
 }
