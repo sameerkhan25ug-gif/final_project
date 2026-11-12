@@ -62,16 +62,16 @@ void take_input( char *name , int *acc_num , double *bal){
     printf("Enter the account number of the account holder : ");
     scanf("%d",acc_num);
     printf("Enter the amount that you want to deopsit: ");
-    scanf("%d",bal);
+    scanf("%lf",bal);
 }
 
 void printf_information( Account *head){
     Account *head_copy=head;
     while(head_copy!=NULL){
-        printf("%s\n",head->holder_name);
-        printf("%d\n",head->account_number);
-        printf("%d\n",head->balance);
-        printf("%d\n",head->status);
+        printf("%s\n",head_copy->holder_name);
+        printf("%d\n",head_copy->account_number);
+        printf("%lf\n",head_copy->balance);
+        printf("%d\n",head_copy->status);
         head_copy=head_copy->next;
 
     }
