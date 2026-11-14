@@ -30,11 +30,11 @@ Account *next_new_account(Account *traverse_pointer, char *name , int number , d
         printf("Please try again ! \n");
     }
     else if( number <0 ){
-        printf("The entered account number is not correct! \n");
+        printf("The entered account number i.e %d is not correct! \n",number);
         printf("Please try again ! \n");
     }
     else if( balance <0 ){
-        printf("The entered balance connot be saved in account! \n");
+        printf("The entered balance i.e %lf connot be saved in account! \n",balance);
         printf("Please try again ! \n");
     }
     else{
@@ -57,24 +57,32 @@ Account *next_new_account(Account *traverse_pointer, char *name , int number , d
 
 Account *delete_at_random_position( Account *head ,int number ){
     Account *traverse_random=head;
-    Account *traverse_random_prev;
+    Account *traverse_random_prev=NULL;
     if(traverse_random->next==NULL ){
+        free(traverse_random);
         traverse_random=NULL;
         traverse_random_prev=NULL;
+        return NULL;
+    }
+    else if ( traverse_random->account_number==number){
+         traverse_random_prev=traverse_random->next;
+         free(traverse_random);
+         head=traverse_random_prev;
     }
     else {
         while(traverse_random!=NULL){
         if(traverse_random->account_number==number){
             traverse_random_prev->next=traverse_random->next;
             free(traverse_random);
-            return 0;
+            head=traverse_random_prev;
+            return head;
         }
         traverse_random_prev=traverse_random;
         traverse_random=traverse_random->next;
-    }  
+      }  
     }
     
-    return traverse_random_prev;  
+    return head; 
 }
 
 Account  *search_at_random_position( Account *head ,int number ){
@@ -99,11 +107,11 @@ Account *make_account(Account *head , char *name , int number , double balance){
         printf("Please try again ! \n");
     }
     else if( number <0 ){
-        printf("The entered account number is not correct! \n");
+        printf("The entered account number  i.e %d is not correct! \n",number);
         printf("Please try again ! \n");
     }
     else if( balance <0 ){
-        printf("The entered balance connot be saved in account! \n");
+        printf("The entered balance connot  i.e %lf be saved in account! \n",balance);
         printf("Please try again ! \n");
     }
     else if(head==NULL){
@@ -132,16 +140,33 @@ void free_memory( Account *head){
 
 int main(){
     Account *head=NULL;
+    Account *copy_head=NULL;
     head=make_account(head , "Sameer", 100 , 1000000.00);
+    copy_head=head;
     // printf("%s\n",head->holder_name);
     //     printf("%d\n",head->account_number);
     //     printf("%lf\n",head->balance);
     //     printf("%d\n",head->status);
-    next_new_account(head ,"Sam", 200 , 20000);
+    make_account(head ,"Sam", 200 , 20000);
         // printf("%s\n",head->holder_name);
         // printf("%d\n",head->account_number);
         // printf("%lf\n",head->balance);
         // printf("%d\n",head->status);
+
+   make_account(head ,"Sujal", 300 , 30000);
+   make_account(head ,"Sujal", 400 , 30000);
+   while( copy_head!=NULL){
+        printf("%s\n",copy_head->holder_name);
+        printf("%d\n",copy_head->account_number);
+        printf("%lf\n",copy_head->balance);
+        printf("%d\n",copy_head->status);
+        copy_head=copy_head->next;
+    }
+
+   delete_at_random_position(head , 200);
+   delete_at_random_position(head , 300);
+   delete_at_random_position(head , 400);
+   head=delete_at_random_position(head , 100);
 
     while( head!=NULL){
         printf("%s\n",head->holder_name);
