@@ -25,6 +25,19 @@ Account *next_new_account(Account *traverse_pointer, char *name , int number , d
     if(new_ptr==NULL){
         printf("Memory Allocation failed! Try again.");
     }
+    else if(name==NULL){
+        printf("The entered name is not correct! \n");
+        printf("Please try again ! \n");
+    }
+    else if( number <0 ){
+        printf("The entered account number is not correct! \n");
+        printf("Please try again ! \n");
+    }
+    else if( balance <0 ){
+        printf("The entered balance connot be saved in account! \n");
+        printf("Please try again ! \n");
+    }
+    else{
     strcpy(new_ptr->holder_name, name);
     new_ptr->account_number=number;
     new_ptr->balance=balance;
@@ -32,6 +45,8 @@ Account *next_new_account(Account *traverse_pointer, char *name , int number , d
     new_ptr->next=NULL;
     traverse_pointer->next=new_ptr;
     traverse_pointer=traverse_pointer->next;
+    }
+    
     return new_ptr;
 }
 
@@ -58,6 +73,7 @@ Account  *search_at_random_position( Account *head ,int number ){
         }
         search_random=search_random->next;
     }  
+    return NULL;
 }
 
 Account *make_account(Account *head , char *name , int number , double balance){
@@ -66,7 +82,19 @@ Account *make_account(Account *head , char *name , int number , double balance){
     if(ptr==NULL){
         printf("Memory Allocation failed! Try again.");
     }
-    if(head==NULL){
+    else if(name==NULL){
+        printf("The entered name is not correct! \n");
+        printf("Please try again ! \n");
+    }
+    else if( number <0 ){
+        printf("The entered account number is not correct! \n");
+        printf("Please try again ! \n");
+    }
+    else if( balance <0 ){
+        printf("The entered balance connot be saved in account! \n");
+        printf("Please try again ! \n");
+    }
+    else if(head==NULL){
         head=ptr;
         strcpy(ptr->holder_name, name);
          ptr->account_number=number;
@@ -93,9 +121,5 @@ void free_memory( Account *head){
 
 int main(){
     Account *head=NULL;
-    make_account(head , "Sameer", 100 , 1000000.00);
-    printf("%s\n",head->holder_name);
-        printf("%d\n",head->account_number);
-        printf("%lf\n",head->balance);
-        printf("%d\n",head->status);
+    
 }
