@@ -53,7 +53,12 @@ Account *next_new_account(Account *traverse_pointer, char *name , int number , d
 Account *delete_at_random_position( Account *head ,int number ){
     Account *traverse_random=head;
     Account *traverse_random_prev;
-    while(traverse_random!=NULL){
+    if(traverse_random->next==NULL ){
+        traverse_random=NULL
+        traverse_random_prev=NULL
+    }
+    else {
+        while(traverse_random!=NULL){
         if(traverse_random->account_number==number){
             traverse_random_prev->next=traverse_random->next;
             free(traverse_random);
@@ -62,6 +67,8 @@ Account *delete_at_random_position( Account *head ,int number ){
         traverse_random_prev=traverse_random;
         traverse_random=traverse_random->next;
     }  
+    }
+    
     return traverse_random_prev;  
 }
 
@@ -106,7 +113,6 @@ Account *make_account(Account *head , char *name , int number , double balance){
     else{
         return_value=next_new_account(head,name ,number ,balance);
     }
-
     return return_value;
 }
 
@@ -121,5 +127,9 @@ void free_memory( Account *head){
 
 int main(){
     Account *head=NULL;
-    
+    head=make_account(head , NULL, 100 , 1000000.00);
+    printf("%s\n",head->holder_name);
+        printf("%d\n",head->account_number);
+        printf("%lf\n",head->balance);
+        printf("%d\n",head->status);
 }
