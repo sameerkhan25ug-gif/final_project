@@ -46,6 +46,7 @@ Account *next_new_account(Account *traverse_pointer, char *name , int number , d
     while( traverse_pointer!=NULL){
         if(traverse_pointer->next==NULL){
             traverse_pointer->next=new_ptr;
+            break;
         }
         traverse_pointer=traverse_pointer->next;
     }
@@ -115,7 +116,7 @@ Account *make_account(Account *head , char *name , int number , double balance){
          return_value=ptr;
     }
     else{
-        return_value=next_new_account(head,name ,number ,balance);
+        return_value=next_new_account(head, name ,number ,balance);
     }
     return return_value;
 }
@@ -131,9 +132,22 @@ void free_memory( Account *head){
 
 int main(){
     Account *head=NULL;
-    head=make_account(head , NULL, 100 , 1000000.00);
-    printf("%s\n",head->holder_name);
+    head=make_account(head , "Sameer", 100 , 1000000.00);
+    // printf("%s\n",head->holder_name);
+    //     printf("%d\n",head->account_number);
+    //     printf("%lf\n",head->balance);
+    //     printf("%d\n",head->status);
+    next_new_account(head ,"Sam", 200 , 20000);
+        // printf("%s\n",head->holder_name);
+        // printf("%d\n",head->account_number);
+        // printf("%lf\n",head->balance);
+        // printf("%d\n",head->status);
+
+    while( head!=NULL){
+        printf("%s\n",head->holder_name);
         printf("%d\n",head->account_number);
         printf("%lf\n",head->balance);
         printf("%d\n",head->status);
+        head=head->next;
+    }
 }
