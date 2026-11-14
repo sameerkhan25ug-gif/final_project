@@ -54,8 +54,8 @@ Account *delete_at_random_position( Account *head ,int number ){
     Account *traverse_random=head;
     Account *traverse_random_prev;
     if(traverse_random->next==NULL ){
-        traverse_random=NULL
-        traverse_random_prev=NULL
+        traverse_random=NULL;
+        traverse_random_prev=NULL;
     }
     else {
         while(traverse_random!=NULL){
