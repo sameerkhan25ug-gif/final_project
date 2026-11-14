@@ -30,11 +30,11 @@ Account *next_new_account(Account *traverse_pointer, char *name , int number , d
         printf("Please try again ! \n");
     }
     else if( number <0 ){
-        printf("The entered account number i.e %d is not correct! \n",number);
+        printf("The entered account number  i.e %d is not correct! \n",number);
         printf("Please try again ! \n");
     }
     else if( balance <0 ){
-        printf("The entered balance i.e %lf connot be saved in account! \n",balance);
+        printf("The entered balance connot  i.e %lf be saved in account! \n",balance);
         printf("Please try again ! \n");
     }
     else{
@@ -135,7 +135,7 @@ void free_memory( Account *head){
         free(head);
         head=head->next;
     }
-    printf("Deleted all accounts details !")
+    printf("Deleted all accounts details !");
 }
 
 int main(){
