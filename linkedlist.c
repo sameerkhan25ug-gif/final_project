@@ -43,9 +43,13 @@ Account *next_new_account(Account *traverse_pointer, char *name , int number , d
     new_ptr->balance=balance;
     new_ptr->status=ACCOUNT_ACTIVE;
     new_ptr->next=NULL;
-    traverse_pointer->next=new_ptr;
-    traverse_pointer=traverse_pointer->next;
+    while( traverse_pointer!=NULL){
+        if(traverse_pointer->next==NULL){
+            traverse_pointer->next=new_ptr;
+        }
+        traverse_pointer=traverse_pointer->next;
     }
+  }
     
     return new_ptr;
 }
