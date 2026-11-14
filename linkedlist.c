@@ -92,7 +92,8 @@ Account  *search_at_random_position( Account *head ,int number ){
             return search_random;
         }
         search_random=search_random->next;
-    }  
+    }
+    printf("Unable to find the detail of mentioned account number! Try again");
     return NULL;
 }
 
@@ -130,49 +131,13 @@ Account *make_account(Account *head , char *name , int number , double balance){
 }
 
 void free_memory( Account *head){
-    Account *to_del_next;
     while(head!=NULL){
-        to_del_next=head->next;
         free(head);
-        head=to_del_next;
+        head=head->next;
     }
+    printf("Deleted all accounts details !")
 }
 
 int main(){
-    Account *head=NULL;
-    Account *copy_head=NULL;
-    head=make_account(head , "Sameer", 100 , 1000000.00);
-    copy_head=head;
-    // printf("%s\n",head->holder_name);
-    //     printf("%d\n",head->account_number);
-    //     printf("%lf\n",head->balance);
-    //     printf("%d\n",head->status);
-    make_account(head ,"Sam", 200 , 20000);
-        // printf("%s\n",head->holder_name);
-        // printf("%d\n",head->account_number);
-        // printf("%lf\n",head->balance);
-        // printf("%d\n",head->status);
-
-   make_account(head ,"Sujal", 300 , 30000);
-   make_account(head ,"Sujal", 400 , 30000);
-   while( copy_head!=NULL){
-        printf("%s\n",copy_head->holder_name);
-        printf("%d\n",copy_head->account_number);
-        printf("%lf\n",copy_head->balance);
-        printf("%d\n",copy_head->status);
-        copy_head=copy_head->next;
-    }
-
-   delete_at_random_position(head , 200);
-   delete_at_random_position(head , 300);
-   delete_at_random_position(head , 400);
-   head=delete_at_random_position(head , 100);
-
-    while( head!=NULL){
-        printf("%s\n",head->holder_name);
-        printf("%d\n",head->account_number);
-        printf("%lf\n",head->balance);
-        printf("%d\n",head->status);
-        head=head->next;
-    }
+    
 }
