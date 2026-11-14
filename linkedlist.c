@@ -24,18 +24,22 @@ Account *next_new_account(Account *traverse_pointer, char *name , int number , d
     Account *new_ptr=(Account *)(malloc(sizeof(Account)));
     if(new_ptr==NULL){
         printf("Memory Allocation failed! Try again.");
+        free(new_ptr);
     }
     else if(name==NULL){
         printf("The entered name is not correct! \n");
         printf("Please try again ! \n");
+        free(new_ptr);
     }
     else if( number <0 ){
         printf("The entered account number  i.e %d is not correct! \n",number);
         printf("Please try again ! \n");
+        free(new_ptr);
     }
     else if( balance <0 ){
         printf("The entered balance connot  i.e %lf be saved in account! \n",balance);
         printf("Please try again ! \n");
+        free(new_ptr);
     }
     else{
     strcpy(new_ptr->holder_name, name);
@@ -102,18 +106,22 @@ Account *make_account(Account *head , char *name , int number , double balance){
     Account *ptr=(Account *)(malloc(sizeof(Account)));
     if(ptr==NULL){
         printf("Memory Allocation failed! Try again.");
+        free(ptr);
     }
     else if(name==NULL){
         printf("The entered name is not correct! \n");
         printf("Please try again ! \n");
+        free(ptr);
     }
     else if( number <0 ){
         printf("The entered account number  i.e %d is not correct! \n",number);
         printf("Please try again ! \n");
+        free(ptr);
     }
     else if( balance <0 ){
         printf("The entered balance connot  i.e %lf be saved in account! \n",balance);
         printf("Please try again ! \n");
+        free(ptr);
     }
     else if(head==NULL){
         head=ptr;
