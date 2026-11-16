@@ -37,7 +37,7 @@ Account *next_new_account(Account *traverse_pointer, char *name , int number , d
         free(new_ptr);
     }
     else if( balance <0 ){
-        printf("The entered balance connot  i.e %lf be saved in account! \n",balance);
+        printf("The entered balance i.e %lf connot be saved in account! \n",balance);
         printf("Please try again ! \n");
         free(new_ptr);
     }
@@ -147,5 +147,8 @@ void free_memory( Account *head){
 }
 
 int main(){
+    Account *head= NULL ;
+    make_account(head , NULL , 100 , 1000);
+    make_account(head , "Sam" , 0 , -1);
     
 }
