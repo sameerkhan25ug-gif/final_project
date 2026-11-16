@@ -81,7 +81,7 @@ void change_account_status(Account *head ,int number  ){
     Account *traverse_ptr=head;
     while(traverse_ptr!=NULL){
         if(traverse_ptr->account_number==number){
-            traverse_ptr->staus=0;
+            traverse_ptr->status=0;
         }
     traverse_ptr=traverse_ptr->next;
     }
@@ -119,9 +119,9 @@ void change_account_status(Account *head ,int number  ){
 void free_memory( Account *head){
     Account *head_copy=head;
     while(head_copy!=NULL){
-        free(head_copy);
-        head_copy=head->next;
-        head=head->next;
+        head_copy=head->next
+        free(head);
+       head=head_next;
     }
     printf("Deleted all accounts details !");
 }
