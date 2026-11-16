@@ -81,7 +81,7 @@ void change_account_status(Account *head ,int number  ){
     Account *traverse_ptr=head;
     while(traverse_ptr!=NULL){
         if(traverse_ptr->account_number==number){
-            traverse_ptr->status=0;
+            traverse_ptr->status=ACCOUNT_CLOSED;
         }
     traverse_ptr=traverse_ptr->next;
     }
