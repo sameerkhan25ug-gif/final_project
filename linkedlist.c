@@ -86,35 +86,35 @@ void change_account_status(Account *head ,int number  ){
     traverse_ptr=traverse_ptr->next;
     }
 }
-Account *delete_at_random_position( Account *head ,int number ){
-    Account *traverse_random=head;
-    Account *traverse_random_prev=NULL;
-    if(traverse_random->next==NULL ){
-        free(traverse_random);
-        traverse_random=NULL;
-        traverse_random_prev=NULL;
-        return NULL;
-    }
-    else if ( traverse_random->account_number==number){
-         traverse_random_prev=traverse_random->next;
-         free(traverse_random);
-         head=traverse_random_prev;
-    }
-    else {
-        while(traverse_random!=NULL){
-        if(traverse_random->account_number==number){
-            traverse_random_prev->next=traverse_random->next;
-            free(traverse_random);
-            head=traverse_random_prev;
-            return head;
-        }
-        traverse_random_prev=traverse_random;
-        traverse_random=traverse_random->next;
-      }  
-    }
+// Account *delete_at_random_position( Account *head ,int number ){
+//     Account *traverse_random=head;
+//     Account *traverse_random_prev=NULL;
+//     if(traverse_random->next==NULL ){
+//         free(traverse_random);
+//         traverse_random=NULL;
+//         traverse_random_prev=NULL;
+//         return NULL;
+//     }
+//     else if ( traverse_random->account_number==number){
+//          traverse_random_prev=traverse_random->next;
+//          free(traverse_random);
+//          head=traverse_random_prev;
+//     }
+//     else {
+//         while(traverse_random!=NULL){
+//         if(traverse_random->account_number==number){
+//             traverse_random_prev->next=traverse_random->next;
+//             free(traverse_random);
+//             head=traverse_random_prev;
+//             return head;
+//         }
+//         traverse_random_prev=traverse_random;
+//         traverse_random=traverse_random->next;
+//       }  
+//     }
    
-    return head;
-}
+//     return head;
+// }
 
 void free_memory( Account *head){
     Account *head_copy=head;
@@ -127,7 +127,7 @@ void free_memory( Account *head){
 }
 
 int main(){
-    Account *head= NULL ;
+    // Account *head= NULL ;
     
     
 }
