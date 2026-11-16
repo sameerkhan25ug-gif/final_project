@@ -77,15 +77,16 @@ Account  *search_at_random_position( Account *head ,int number ){
     return NULL;
 }
 
-void change_account_status(Account *head ,int number  ){
+Account  *change_account_status(Account *head ,int number  ){
     Account *traverse_ptr=head;
     while(traverse_ptr!=NULL){
         if(traverse_ptr->account_number==number){
             traverse_ptr->status=ACCOUNT_CLOSED;
+            return traverse_ptr;
         }
     traverse_ptr=traverse_ptr->next;
     }
-    printf("Entered Account number i.e %d is INVALID",number);
+    return NULL;
 }
 // Account *delete_at_random_position( Account *head ,int number ){
 //     Account *traverse_random=head;
@@ -120,15 +121,17 @@ void change_account_status(Account *head ,int number  ){
 void free_memory( Account *head){
     Account *head_copy=head;
     while(head_copy!=NULL){
-        head_copy=head->next
+        head_copy=head->next;
         free(head);
-       head=head_next;
+       head=head_copy;
     }
     printf("Deleted all accounts details !");
 }
 
 int main(){
-    // Account *head= NULL ;
-    
+    Account *head= NULL ;
+    make_account(head , "Sam" , 1 , 100);
+    // change_account_status(head , 1);
+
     
 }
