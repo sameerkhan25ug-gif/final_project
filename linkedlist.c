@@ -148,7 +148,6 @@ void free_memory( Account *head){
 
 int main(){
     Account *head= NULL ;
-    make_account(head , NULL , 100 , 1000);
-    make_account(head , "Sam" , 0 , -1);
+    
     
 }
