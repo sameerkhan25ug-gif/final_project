@@ -133,6 +133,7 @@ Account *make_account(Account *head , char *name , int number , double balance){
          return_value=ptr;
     }
     else{
+        free(ptr)
         return_value=next_new_account(head, name ,number ,balance);
     }
     return return_value;
