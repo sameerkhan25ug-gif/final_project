@@ -57,12 +57,12 @@ Account *make_account(Account *head , char *name , int number , double balance){
         if(traverse_pointer->next==NULL){
             traverse_pointer->next=ptr;
             break;
-        }
+             }
         traverse_pointer=traverse_pointer->next;
-    }
-        
-    }
-    return ptr;
+            }
+     return ptr;   
+       }
+    return NULL;
 }
 
 Account  *search_at_random_position( Account *head ,int number ){
@@ -77,6 +77,15 @@ Account  *search_at_random_position( Account *head ,int number ){
     return NULL;
 }
 
+void change_account_status(Account *head ,int number  ){
+    Account *traverse_ptr=head;
+    while(traverse_ptr!=NULL){
+        if(traverse_ptr->account_number==number){
+            traverse_ptr->staus=0;
+        }
+    traverse_ptr=traverse_ptr->next;
+    }
+}
 Account *delete_at_random_position( Account *head ,int number ){
     Account *traverse_random=head;
     Account *traverse_random_prev=NULL;
