@@ -28,7 +28,7 @@ Account *make_account(Account *head , char *name , int number , double balance){
         printf("Please try again ! \n");
         free(ptr);
     }
-    else if( number <0 ){
+    else if( number <=0 ){
         printf("The entered account number  i.e %d is not correct! \n",number);
         printf("Please try again ! \n");
         free(ptr);
@@ -66,9 +66,11 @@ Account *make_account(Account *head , char *name , int number , double balance){
 }
 
 void free_memory( Account *head){
+    
     while(head!=NULL){
-        free(head);
         head=head->next;
+        free(head);
+        
     }
     printf("Deleted all accounts details !");
 }
