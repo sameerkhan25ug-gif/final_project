@@ -85,6 +85,7 @@ void change_account_status(Account *head ,int number  ){
         }
     traverse_ptr=traverse_ptr->next;
     }
+    printf("Entered Account number i.e %d is INVALID",number);
 }
 // Account *delete_at_random_position( Account *head ,int number ){
 //     Account *traverse_random=head;
