@@ -102,7 +102,7 @@ Account  *search_at_random_position( Account *head ,int number ){
 }
 
 Account *make_account(Account *head , char *name , int number , double balance){
-    Account *return_value;
+    Account *traverse_pointer==NULL
     Account *ptr=(Account *)(malloc(sizeof(Account)));
     if(ptr==NULL){
         printf("Memory Allocation failed! Try again.");
@@ -133,10 +133,21 @@ Account *make_account(Account *head , char *name , int number , double balance){
          return_value=ptr;
     }
     else{
-        free(ptr)
-        return_value=next_new_account(head, name ,number ,balance);
+        strcpy(ptr->holder_name, name);
+        ptr->account_number=number;
+        ptr->balance=balance;
+        ptr->status=ACCOUNT_ACTIVE;
+        ptr->next=NULL;
+        while( traverse_pointer!=NULL){
+        if(traverse_pointer->next==NULL){
+            traverse_pointer->next=ptr;
+            break;
+        }
+        traverse_pointer=traverse_pointer->next;
     }
-    return return_value;
+        
+    }
+    return traverse_pointer;
 }
 
 void free_memory( Account *head){
